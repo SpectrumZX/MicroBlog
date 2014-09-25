@@ -1,0 +1,42 @@
+body {
+    background-color: #ffffff;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000;
+    margin: 10px auto;
+    width: 1000px;
+ 
+    
+    
+}
+
+
+
+a:link, a:visited {
+  color: #034474;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #034474;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+
+.head_txt1:link, .head_txt1:visited {
+    font-size: 16px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #034474;
+    font-weight :normal;
+    
+}
+
+.head_txt1:link:hover, .head_txt1:visited:hover {
+    font-size: 16px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #034474;
+    font-weight :normal;
+    
+}

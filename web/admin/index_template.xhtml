@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <title>Facelets Template</title>
+    </h:head>
+
+    <body>
+  <div id="general">
+        <div id="top">
+            <ui:insert name="top"><h1># MicroBlog</h1></ui:insert>
+        </div> <div id="red_line"/>
+        <div>
+            <div id="left">
+                <ui:insert name="left">
+        <h:form>
+                    
+            <p><a href="/#{utils.path}/faces/admin/index.xhtml">На главную</a></p> 
+            <p><h:commandLink action="#{articlesFacade_for_del.prepareAddNew(request.getUserPrincipal().getName())}" value="Новое сообщение"/></p>
+            <p><a href="#">Настройки</a></p> 
+            <p><a href="/#{utils.path}/faces/admin/user_list.xhtml">Пользователи</a></p>
+            <p><a href="/#{utils.path}/logout">Выход</a></p>
+            <p/>
+               Всего записей: <h:outputText value="#{articlesFacade_for_del.count()}" /> <br/>
+               Последний id: <h:outputText value="#{articlesFacade_for_del.maxId}" /> <br/><br/>
+               Вы вошли как: <br/><b> #{request.getUserPrincipal().getName()}</b>
+  
+        </h:form>
+                </ui:insert>
+            </div>
+            <div id="content" class="left_content">
+                <ui:insert name="content">Content tmpl</ui:insert>
+            </div>
+        </div>
+        <div id="bottom">
+            <ui:insert name="bottom">MicroBlog&copy;2014</ui:insert>
+        </div>
+</div>
+
+    </body>
+</html>

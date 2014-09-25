@@ -1,0 +1,35 @@
+
+
+
+body {
+    background-color: #E9F1FE;
+    font-size: 12px;
+    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
+    color: #000;
+    width: 400px;   
+    margin: 100px auto;
+}
+
+#loginBox {
+    background-color: white;
+ //   padding: 20px 20px 20px 20px;
+
+}
+#tab{
+    padding-left: 25px;
+    
+}
+
+
+a:link, a:visited {
+  color: #034474;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+a:link:hover, a:visited:hover  {
+  color: #034474;
+  font-weight : bold;
+  text-decoration : underline;
+}
+

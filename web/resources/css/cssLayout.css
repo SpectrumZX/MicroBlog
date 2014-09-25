@@ -1,0 +1,88 @@
+#general {
+  background-color: #E9F1FE;
+display: inline-block;
+}
+
+#left {
+vertical-align: top;
+display: inline-block;
+padding: 10px 0px 20px 15px;
+width: 170px;
+}
+
+.my_table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+ .my_table td {
+    padding: 4px;
+    border: 1px solid;
+    border-color: #40709F;
+   }
+   
+ .my_table th {
+    padding: 4px;
+    border: 1px solid;
+    border-color: #40709F;
+    background: #759EC8;
+   }
+  
+.left_content {
+    margin-right: 10px;
+}
+
+#content {
+    vertical-align: top;
+    display: inline-block;
+    width: 780px;
+}
+
+#form {
+    background-color: white;
+    padding: 20px 20px 20px 100px;
+
+}
+
+#centr_content {
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    margin: auto;
+
+}
+
+#top {
+
+    background-color: #036fab;
+    color: white;
+    padding: 5px 5px 5px 20px;
+}
+
+
+
+#red_line {
+    background-color: red;
+    padding: 2px;
+}
+
+#bottom {
+
+    background-color: #0383C7;
+    padding: 5px;
+    color: #000;
+    text-align: center;
+}
+
+#top a:link, #top a:visited {
+  color: white;
+  font-weight : bold;
+  text-decoration: none;
+}
+
+#top a:link:hover, #top a:visited:hover  {
+  color: black;
+  font-weight : bold;
+  text-decoration : underline;
+}
+
+

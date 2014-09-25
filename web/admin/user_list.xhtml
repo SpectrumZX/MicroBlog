@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <style type="text/css">
+
+    </style>  
+    <body>
+        <ui:composition template="./index_template.xhtml">
+
+ 
+            <ui:define name="content">
+                <div id="centr_content">
+           <h:form>
+                <h3>Список пользователей</h3>
+                <h:dataTable value="#{usersFacade.findAll()}" var="item" class="my_table">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Id"/>
+                        </f:facet>
+                        <h:outputText value="#{item.id}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name"/>
+                        </f:facet>
+                        <h:outputText value="#{item.name}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Login"/>
+                        </f:facet>
+                        <h:outputText value="#{item.login}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Password (MD5 hash)"/>
+                        </f:facet>
+                        <h:outputText value="#{item.password}"/>
+                    </h:column>
+                     <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=""/>
+                        </f:facet>
+                        <h:outputText value="EditID: #{item.id}"/>
+                    </h:column>
+                                         <h:column>
+                        <f:facet name="header">
+                            <h:outputText value=""/>
+                        </f:facet>
+                        <h:outputText value="DeleteID: #{item.id}"/>
+                    </h:column>
+                    
+                </h:dataTable>
+            </h:form>
+                 <br/><br/><br/><br/><br/><br/></div>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

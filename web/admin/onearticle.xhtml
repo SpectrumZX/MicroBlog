@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./index_template.xhtml">
+
+ 
+            <ui:define name="content">
+                
+                  <p>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="white">
+                                    <tr>
+                                        <td style="background-color: #759EC8; font-size: 16px"><span class="head_txt"># #{current_article.head}</span></td>
+                                        <td width="250" style="text-align: right; background-color: #759EC8">
+                                            <h:form>
+                                                <h:outputText value="#{current_article.data}">
+                                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                                </h:outputText>
+                                                &nbsp;
+
+                                                <span class="editor" style="padding:0px 5px;">
+                                                    <h:outputLink value="delete">
+                                                        <h:outputText value="Delete" />
+                                                        <f:param name="id" value="#{current_article.id}" />
+                                                    </h:outputLink>
+                                                    &nbsp;
+
+                                                    <h:commandLink action="#{articlesFacade_for_del.prepareEdit(current_article.id)}" value="Edit"/> 
+                                                    
+
+                                                </span>
+                                            </h:form>
+                                      
+                                        </td>
+
+                                    </tr>
+
+                                    <tr>
+                                        <td colspan="2" style="padding:15px 15px;">
+                                            <div class="content_box">
+                                                <div class="content_txt">
+                                             <h:outputText escape="false" value="#{current_article.bodyText}"/>
+                                           
+                                             
+                                             </div> 
+                                                 
+                                            </div></td>
+                                    </tr>
+                            
+                                </table>
+
+                            </p>
+                
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
