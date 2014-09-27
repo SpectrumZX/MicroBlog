@@ -2,8 +2,8 @@ package beans;
 
 import javax.annotation.Resource;
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -16,7 +16,7 @@ import javax.transaction.UserTransaction;
 
 
 @ManagedBean
-@Stateless
+@SessionScoped
 public class UsersFacade extends AbstractFacade<Users> {
     @EJB private Utils utils;
     @EJB private GroupsFacade groupsFacade;
@@ -50,6 +50,24 @@ Users current_usr = new Users();
       
       return "registration.xhtml";
     }
+
+       
+      public String removeSQL(int usr_id) throws NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+    utx.begin();
+    em.createNativeQuery("DELETE FROM users_groups WHERE user_id = " + usr_id + ";").executeUpdate();
+    em.createNativeQuery("DELETE FROM users WHERE id = " + usr_id + ";").executeUpdate();
+    utx.commit();
+       return "user_list.xhtml";
+    }
+     
+    
+    public String prepareEdit(int usr_id) {
+     // current_usr = new Users();
+      current_usr = find(usr_id);
+      // убираем хеш старого пароля
+      current_usr.setPassword(null);
+      return "usr_edit.xhtml";
+    }
     
     public String registration() {
         //получаем хеш пароля и пишем его в entity
@@ -76,6 +94,53 @@ Users current_usr = new Users();
      return "reg_finish.xhtml";
      
     }
+    
+    public String edit() {
+        //получаем хеш пароля и пишем его в entity
+        String hash = utils.md5(current_usr.getPassword());
+        current_usr.setPassword(hash);
+        
+  
+        
+       try {
+            utx.begin();
+            getEntityManager().merge(current_usr);
+            utx.commit();
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) {}
+             
+       
+        int user_id = findIdByName(current_usr.getLogin());
+        current_usr = this.find(user_id);
+        Groups groups = groupsFacade.find(1); // id 1 - admins group
+        groups.getUsersCollection().add(current_usr);    
+        
+    try {
+            utx.begin();
+            getEntityManager().merge(groups);
+            utx.commit();
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) {}
+    
+
+    
+    
+    
+     return "edit_finish.xhtml";
+     
+    }
+    
+//      public String edit() {
+//
+//        try {
+//            utx.begin();
+//            getEntityManager().merge(current);
+//            utx.commit();
+//
+//        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) {
+//        }
+//        return "index.xhtml";
+//    }
+    
+    
     
         public int findIdByName(String name) {
         Query q = em.createNativeQuery("SELECT id FROM users WHERE login='" + name + "'");

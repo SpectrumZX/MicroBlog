@@ -1,19 +1,21 @@
 package beans;
 
+import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
+import javax.transaction.UserTransaction;
 
 @Stateless
 public class GroupsFacade extends AbstractFacade<Groups> {
 
+    
     @PersistenceContext(unitName = "MicroBlog")
-    private EntityManager em3;
+    private EntityManager em;
 
     @Override
     protected EntityManager getEntityManager() {
-        return em3;
+        return em;
     }
 
     public GroupsFacade() {
@@ -24,5 +26,6 @@ public class GroupsFacade extends AbstractFacade<Groups> {
     public Groups find(Object id) {
         return getEntityManager().find(Groups.class, id);
     }
+ 
    
 }

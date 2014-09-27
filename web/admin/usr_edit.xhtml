@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+
+        <ui:composition template="./index_template.xhtml">
+
+            <ui:define name="content">
+
+                <h:body>
+
+                  
+     <div id="form">   
+<h:form>
+<h:messages></h:messages>   
+<br/><br/><br/><br/>
+ <table width="320" border="0">
+  <tr>
+      <td colspan="2"><strong>Редактирование профайла пользователя</strong><p/><br/></td>
+  </tr>
+  <tr>
+    <td>Имя:</td>
+    <td><h:inputText size="30" label="Заголовок" value="#{usersFacade.currentUsr.name}" required="true"/></td>
+  </tr>
+  <tr>
+    <td>Логин:</td>
+    <td><h:inputText size="30" label="Заголовок" value="#{usersFacade.currentUsr.login}" required="true"/></td>
+  </tr>
+  <tr>
+    <td>Пароль:</td>
+    <td><h:inputText size="30" label="Заголовок" value="#{usersFacade.currentUsr.password}" required="true"/></td>
+  </tr>
+     <tr>
+         <td colspan="2" align="center">Введите новый пароль</td>
+  </tr>
+    <tr>
+        <td colspan="2" style="text-align: center"><p/><br/><br/> <h:commandButton action="#{usersFacade.edit()}" value="Сохранить"></h:commandButton></td>
+  </tr>
+</table> <br/><br/><br/><br/>
+</h:form>  
+ </div>                  
+                 
+    
+                </h:body>
+ 
+            </ui:define>
+
+        </ui:composition>
+
+
+ 
+</html>
