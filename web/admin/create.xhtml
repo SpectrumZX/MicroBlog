@@ -18,7 +18,7 @@
                 Дата: <h:inputText label="Дата" value="#{articlesFacade_for_del.current.data}" required="true">
                     <f:convertDateTime dateStyle="short" />
                 </h:inputText> <br/><br/>
-                Автор ID: <h:inputText label="Заголовок" value="#{articlesFacade_for_del.current.authorId.id}" required="true"/> <br/><br/>
+                Автор ID: <h:inputText label="Заголовок" value="#{articlesFacade_for_del.author_id}" required="true"/> <br/><br/>
                 <h:commandButton action="#{articlesFacade_for_del.addNew()}" value="Сохранить"></h:commandButton><p/>
                
             </h:form>

@@ -18,22 +18,32 @@ import javax.transaction.UserTransaction;
 @SessionScoped
 public class ArticlesFacade_for_del extends AbstractFacade<Articles> {
 
-   //@EJB UsersFacade usFacade;
+   UsersFacade usFacade;
     
    @Resource
    UserTransaction utx;
 
-    
     @PersistenceContext(unitName = "MicroBlog")
     private EntityManager em;
 
-    Articles current;
+    private Articles current;
+    private Integer author_id;
+
+    public Integer getAuthor_id() {
+        author_id = current.getAuthorId().getId();
+        return author_id;
+    }
+
+    public void setAuthor_id(Integer author_id) {
+        this.author_id = author_id;
+    }
     
     @Override
     protected EntityManager getEntityManager() {
         return em;
     }
-
+    
+    
     public ArticlesFacade_for_del() {
         super(Articles.class);
     }
@@ -60,7 +70,7 @@ public class ArticlesFacade_for_del extends AbstractFacade<Articles> {
     }
 
     public String edit() {
-
+        setObjAuthorId_to_article();
         try {
             utx.begin();
             getEntityManager().merge(current);
@@ -71,20 +81,15 @@ public class ArticlesFacade_for_del extends AbstractFacade<Articles> {
         return "index.xhtml";
     }
 
-
-    public String add(Articles entity) {
-        try {
+    public String addNew() { 
+        setObjAuthorId_to_article();  // перед комитом прикрепляем Users author_id к Articles current
+         try {
             utx.begin();
-            getEntityManager().persist(entity);
+            getEntityManager().persist(current);
             utx.commit();
-            return "index.xhtml";
-        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) {
-        }
-        return null;
-    }
-
-    public String addNew() {  
-        add(current);
+        
+        } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) { }
+        
         return "index.xhtml";
     }
 
@@ -106,6 +111,12 @@ public class ArticlesFacade_for_del extends AbstractFacade<Articles> {
         String result = em.createNamedQuery("Users.findByLogin").setParameter("login", name).getSingleResult().toString();
         int id = Integer.parseInt(result);
         return id;
+    }
+     
+    public void setObjAuthorId_to_article(){
+        // по id прикрепляем объект authorId в Articles current
+    Users authorId = getEntityManager().find(Users.class, author_id);
+    current.setAuthorId(authorId);
     }
     
     public String prepareAddNew(String login) {

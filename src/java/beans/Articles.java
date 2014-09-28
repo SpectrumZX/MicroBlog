@@ -66,6 +66,7 @@ public class Articles implements Serializable {
         this.head = head;
         this.data = data;
     }
+ 
 
     public Integer getId() {
         return id;
