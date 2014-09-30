@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.Resource;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -51,8 +53,27 @@ Users current_usr = new Users();
       return "registration.xhtml";
     }
 
-       
+//    public void removeById(Integer id) {
+//        // меняем во всех статьях автора на "пользователь удален"
+//        try {
+//            utx.begin();
+//            em.createNativeQuery(
+//                    "UPDATE articles" +
+//                    "SET author_id=2"+
+//                    "WHERE author_id=" + id).executeUpdate();
+//            utx.commit();
+//         // удаляем сам аккаунт   
+//            removeSQL(id);
+//            } catch (IllegalStateException | SecurityException | HeuristicMixedException | HeuristicRollbackException | NotSupportedException | RollbackException | SystemException e) {}
+//        
+//           
+//    }
       public String removeSQL(int usr_id) throws NotSupportedException, SystemException, RollbackException, HeuristicMixedException, HeuristicRollbackException {
+   utx.begin();
+     em.createNativeQuery(
+                    "UPDATE articles SET author_id=2 WHERE author_id=" + usr_id+";").executeUpdate();
+    utx.commit();
+    
     utx.begin();
     em.createNativeQuery("DELETE FROM users_groups WHERE user_id = " + usr_id + ";").executeUpdate();
     em.createNativeQuery("DELETE FROM users WHERE id = " + usr_id + ";").executeUpdate();
