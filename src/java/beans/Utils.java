@@ -10,12 +10,17 @@ import javax.faces.bean.ManagedBean;
 @Stateful
 public class Utils {
     
-private final String path = "MicroBlog";    //  имя домена для правильного формирования линков
-                                            //  http: //localhost:8080/  #{path}  /faces/admin/index.xhtml
+private String path = "MicroBlog";    //  имя домена для правильного формирования линков  http: //localhost:8080/  #{path}  /faces/admin/index.xhtml
+private int preview_length = 10;  // количество символов в превью статьи
+
 
     public String getPath() {
         return path;
     }
+    
+      public int getPreviewLength() {
+        return preview_length;
+    }  
 
   
     public String md5(String text){

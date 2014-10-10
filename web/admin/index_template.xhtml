@@ -14,7 +14,8 @@
     <body>
   <div id="general">
         <div id="top">
-            <ui:insert name="top"><h1># MicroBlog</h1></ui:insert>
+            #{settingsFacade.updateSet()}  
+            <ui:insert name="top"><h1>#{settingsFacade.settings.header}</h1></ui:insert>
         </div> <div id="red_line"/>
         <div>
             <div id="left">
@@ -23,7 +24,7 @@
                     
             <p><a href="/#{utils.path}/faces/admin/index.xhtml">На главную</a></p> 
             <p><h:commandLink action="#{articlesFacade_for_del.prepareAddNew(request.getUserPrincipal().getName())}" value="Новое сообщение"/></p>
-            <p><a href="#">Настройки</a></p> 
+            <p><a href="/#{utils.path}/faces/admin/settings.xhtml">Настройки</a></p> 
             <p><a href="/#{utils.path}/faces/admin/user_list.xhtml">Пользователи</a></p>
             <p><a href="/#{utils.path}/logout">Выход</a></p>
             <p/>
@@ -39,7 +40,7 @@
             </div>
         </div>
         <div id="bottom">
-            <ui:insert name="bottom">MicroBlog&copy;2014</ui:insert>
+            <ui:insert name="bottom">#{settingsFacade.settings.bottom}</ui:insert>
         </div>
 </div>
 

@@ -10,6 +10,12 @@ padding: 10px 0px 20px 15px;
 width: 170px;
 }
 
+#gray_message {
+ font-size: 10px;
+ color: dimgray;
+    
+}
+
 .my_table {
     width: 100%;
     border-collapse: collapse;

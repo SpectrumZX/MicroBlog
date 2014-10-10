@@ -14,7 +14,8 @@
     <h:body>
   <div id="general">
         <div id="top">
-            <ui:insert name="top"><h1># MicroBlog</h1></ui:insert>
+            #{settingsFacade.updateSet()}  
+            <ui:insert name="top"><h1>#{settingsFacade.settings.header}</h1></ui:insert>
         </div>
        
         <div id="left">
@@ -23,10 +24,17 @@
             <p><a href="/#{utils.path}/faces/index.xhtml">На главную</a></p> 
             <p><h:commandLink action="registration.xhtml" value="Регистрация"/></p> 
             <p><a href="/#{utils.path}/faces/admin/index.xhtml">Вход</a></p>
+ 
+            
             <p/>
                Всего записей: <h:outputText value="#{articlesFacade_for_del.count()}" /> <br/>
-               Последний id: <h:outputText value="#{articlesFacade_for_del.maxId}" /> <br/><br/>
-               
+               Последний id: <h:outputText value="#{articlesFacade_for_del.maxId}" /><p/>
+                        <div id="gray_message">
+            Для входа зарегестрируйтесь<br/>
+            или используйте<br/>
+            Login: admin<br/>
+            Password: 7777
+            </div>
             </h:form>
                 </ui:insert>
         </div>
@@ -35,7 +43,7 @@
         </div>
   
         <div id="bottom">
-            <ui:insert name="bottom">MicroBlog&copy;2014</ui:insert>
+            <ui:insert name="bottom">#{settingsFacade.settings.bottom}</ui:insert>
         </div>
 </div>
     </h:body>

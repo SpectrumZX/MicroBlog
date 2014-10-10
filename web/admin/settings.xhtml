@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<body>
+
+<ui:composition template="./index_template.xhtml">
+<ui:define name="content">
+    <dir id="form">
+#{settingsFacade.updateSet()}  
+
+<h:messages></h:messages>
+<h:form>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td colspan="2"><h2>Настройки</h2></td>
+  </tr>
+  <tr>
+    <td width="40%">Количество символов превью статьи:</td>
+    <td width="60%"><h:inputText size="50" value="#{settingsFacade.settings.previewLength}"/></td>
+  </tr>
+  <tr>
+    <td>Path:</td>
+    <td><h:inputText size="50" value="#{settingsFacade.settings.path}"/></td>
+  </tr>
+  <tr>
+    <td>Вывести статью на главную(id)</td>
+    <td><h:inputText size="50" value="#{settingsFacade.settings.firstId}"/></td>
+  </tr>
+  <tr>
+    <td>Заголовок:</td>
+    <td><h:inputText size="50" value="#{settingsFacade.settings.header}"/></td>
+  </tr>
+  <tr>
+    <td>Подвал:</td>
+    <td><h:inputText size="50" value="#{settingsFacade.settings.bottom}"/></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+        <p/><h:commandButton action="#{settingsFacade.saveSettings()}" value="Сохранить"/>
+    </td>
+  </tr>
+</table>
+
+ </h:form>                   
+</dir>                 
+</ui:define>
+
+</ui:composition>
+
+</body>
+</html>
+
