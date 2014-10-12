@@ -15,15 +15,15 @@
   <div id="general">
         <div id="top">
             #{settingsFacade.updateSet()}  
-            <ui:insert name="top"><h1>#{settingsFacade.settings.header}</h1></ui:insert>
+            <ui:insert name="top"><h:outputText escape="false" value="#{settingsFacade.settings.header}"/></ui:insert>
         </div>
        
         <div id="left">
                 <ui:insert name="left">
             <h:form>
-            <p><a href="/#{utils.path}/faces/index.xhtml">На главную</a></p> 
+            <p><a href="/#{settingsFacade.settings.path}/faces/index.xhtml">На главную</a></p> 
             <p><h:commandLink action="registration.xhtml" value="Регистрация"/></p> 
-            <p><a href="/#{utils.path}/faces/admin/index.xhtml">Вход</a></p>
+            <p><a href="/#{settingsFacade.settings.path}/faces/admin/index.xhtml">Вход</a></p>
  
             
             <p/>
@@ -43,7 +43,7 @@
         </div>
   
         <div id="bottom">
-            <ui:insert name="bottom">#{settingsFacade.settings.bottom}</ui:insert>
+            <ui:insert name="bottom"><h:outputText escape="false" value="#{settingsFacade.settings.bottom}"/></ui:insert>
         </div>
 </div>
     </h:body>

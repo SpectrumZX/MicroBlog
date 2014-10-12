@@ -14,19 +14,20 @@
     <body>
   <div id="general">
         <div id="top">
+            
             #{settingsFacade.updateSet()}  
-            <ui:insert name="top"><h1>#{settingsFacade.settings.header}</h1></ui:insert>
+            <ui:insert name="top" ><h:outputText escape="false" value="#{settingsFacade.settings.header}"/></ui:insert>
         </div> <div id="red_line"/>
         <div>
             <div id="left">
                 <ui:insert name="left">
         <h:form>
                     
-            <p><a href="/#{utils.path}/faces/admin/index.xhtml">На главную</a></p> 
+            <p><a href="/#{settingsFacade.settings.path}/faces/admin/index.xhtml">На главную</a></p> 
             <p><h:commandLink action="#{articlesFacade_for_del.prepareAddNew(request.getUserPrincipal().getName())}" value="Новое сообщение"/></p>
-            <p><a href="/#{utils.path}/faces/admin/settings.xhtml">Настройки</a></p> 
-            <p><a href="/#{utils.path}/faces/admin/user_list.xhtml">Пользователи</a></p>
-            <p><a href="/#{utils.path}/logout">Выход</a></p>
+            <p><a href="/#{settingsFacade.settings.path}/faces/admin/settings.xhtml">Настройки</a></p> 
+            <p><a href="/#{settingsFacade.settings.path}/faces/admin/user_list.xhtml">Пользователи</a></p>
+            <p><a href="/#{settingsFacade.settings.path}/logout">Выход</a></p>
             <p/>
                Всего записей: <h:outputText value="#{articlesFacade_for_del.count()}" /> <br/>
                Последний id: <h:outputText value="#{articlesFacade_for_del.maxId}" /> <br/><br/>
@@ -40,7 +41,7 @@
             </div>
         </div>
         <div id="bottom">
-            <ui:insert name="bottom">#{settingsFacade.settings.bottom}</ui:insert>
+            <ui:insert name="bottom"><h:outputText escape="false" value="#{settingsFacade.settings.bottom}"/></ui:insert>
         </div>
 </div>
 

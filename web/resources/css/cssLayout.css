@@ -46,7 +46,13 @@ width: 170px;
 
 #form {
     background-color: white;
-    padding: 20px 20px 20px 100px;
+    padding: 20px 25% 20px 25%;
+
+}
+
+#form2 {
+    background-color: white;
+    padding: 20px 20px 20px 20px;
 
 }
 

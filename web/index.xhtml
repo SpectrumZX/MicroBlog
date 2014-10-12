@@ -33,7 +33,9 @@
                                         <td colspan="2" style="padding:10px 15px;">
                                             <div class="content_box">
                                                 <div class="content_txt">
-                                             <h:outputText escape="false" value="#{fn:substring(item.bodyText,0,1000)}..."/>                              
+                                                    
+                                                      #{settingsFacade.updateSet()} 
+                                                    <h:outputText escape="false" value="#{fn:substring(item.bodyText,0,settingsFacade.settings.previewLength)}..."/>                            
                                              </div>            
                                             </div></td>
                                     </tr>
