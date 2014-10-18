@@ -1,7 +1,9 @@
 package beans;
 
 import javax.annotation.Resource;
+import javax.ejb.Stateful;
 import javax.ejb.Stateless;
+import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
@@ -26,6 +28,7 @@ public class SettingsFacade extends AbstractFacade<Settings> {
     
     public void updateSet(){
     currentSettings = em.find(Settings.class, 1);
+    
     }
     
     @Override
@@ -38,6 +41,7 @@ public class SettingsFacade extends AbstractFacade<Settings> {
     }
     
     public Settings getSettings() {
+        
         return currentSettings;
     }
     

@@ -20,7 +20,7 @@ public class logout extends HttpServlet {
             if (session!= null){
                 session.invalidate();
             }
-            response.sendRedirect("/MicroBlog/faces/index.xhtml");
+            response.sendRedirect("/MicroBlog/faces/index");
     }
 
     @Override

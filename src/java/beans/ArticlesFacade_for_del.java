@@ -1,7 +1,10 @@
 package beans;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.Resource;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
@@ -19,7 +22,7 @@ import javax.transaction.UserTransaction;
 public class ArticlesFacade_for_del extends AbstractFacade<Articles> {
 
    UsersFacade usFacade;
-    
+   
    @Resource
    UserTransaction utx;
 
@@ -47,6 +50,34 @@ public class ArticlesFacade_for_del extends AbstractFacade<Articles> {
     public ArticlesFacade_for_del() {
         super(Articles.class);
     }
+    public int getMaximumRange(){
+    return maximum_range;
+    }
+    
+    private int maximum_range = 5;  // количество статей на странице getRanges()
+    
+    public List<Ranges> getRanges(){  // возвращает лист диапазонов страниц 1-10, 11-20, 21-30... 
+       
+        List<Ranges> rangesList = new ArrayList<>();
+        
+        int articles_count = count();  // количество статей всего
+        
+        int last;
+    
+        for (int first = 1; first < articles_count;) {
+            last = first + maximum_range-1;
+            Ranges range = new Ranges(first, last); // добавляем новый диапазон в лист диапазонов. первая и последняя страница
+            rangesList.add(range);
+            first = last+1;
+        }
+   
+    return rangesList;
+    }
+    
+//    public int[] getArticlesRanges(){
+//        findRange()
+//    return ;
+//    }
 
     public String prepareEdit(Integer id) {
         current = new Articles();

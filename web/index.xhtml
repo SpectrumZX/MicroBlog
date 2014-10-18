@@ -9,48 +9,62 @@
 
         <ui:composition template="./index_template.xhtml">
             <ui:define name="content">
-                        <ui:repeat value="#{articlesFacade.findAll()}" var="item">
-                          <p> 
-                                <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="white">
-                                    <tr>
-                                      <td style="background-color: #759EC8; font-size: 16px">
-                                         <h:outputLink class="head_txt1" value="page">
-                                                        <h:outputText value="# #{item.head}" />
-                                                        <f:param name="id" value="#{item.id}" />
-                                                    </h:outputLink> 
-                                           </td>
-                                        <td width="250" style="text-align: right; background-color: #759EC8">
-                                            <h:form>
-                                                <h:outputText value="#{item.data}">
-                                                    <f:convertDateTime pattern="MM/dd/yyyy" />
-                                                </h:outputText>
+                <ui:repeat value="#{articles_range}" var="item">
+                    <p> 
+                        <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="white">
+                            <tr>
+                                <td style="background-color: #759EC8; font-size: 16px">
+                                    <h:outputLink class="head_txt1" value="page">
+                                        <h:outputText value="# #{item.head}" />
+                                        <f:param name="id" value="#{item.id}" />
+                                    </h:outputLink> 
+                                </td>
+                                <td width="250" style="text-align: right; background-color: #759EC8">
+                                    <h:form>
+                                        <h:outputText value="#{item.data}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
 
-                                            </h:form>
-                                      
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="2" style="padding:10px 15px;">
-                                            <div class="content_box">
-                                                <div class="content_txt">
-                                                    
-                                                      #{settingsFacade.updateSet()} 
-                                                    <h:outputText escape="false" value="#{fn:substring(item.bodyText,0,settingsFacade.settings.previewLength)}..."/>                            
-                                             </div>            
-                                            </div></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="text-align: left"><font style="font-weight: bold">Author:</font> #{item.authorId.name}</td>
-                                        <td style="text-align: right">
-                                           <h:outputLink value="page">
-                                                        <h:outputText value="Читать" />
-                                                        <f:param name="id" value="#{item.id}" />
-                                           </h:outputLink> 
-                                        </td>
-                                    </tr>
-                                </table>
-                                     </p> 
-                        </ui:repeat> 
+                                    </h:form>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="padding:10px 15px;">
+                                    <div class="content_box">
+                                        <div class="content_txt">
+
+                                            #{settingsFacade.updateSet()} 
+                                            <h:outputText escape="false" value="#{fn:substring(item.bodyText,0,settingsFacade.settings.previewLength)}..."/>                            
+                                        </div>            
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align: left"><font style="font-weight: bold">Author:</font> #{item.authorId.name}</td>
+                                <td style="text-align: right">
+                                    <h:outputLink value="page">
+                                        <h:outputText value="Читать" />
+                                        <f:param name="id" value="#{item.id}" />
+                                    </h:outputLink> 
+                                </td>
+                            </tr>
+                        </table>
+                    </p> 
+                </ui:repeat> 
+
+              
+               
+               
+                <ui:repeat value="#{articlesFacade_for_del.ranges}" var="item">
+              <span style="padding:5px;">
+                    <h:outputLink value="index">
+                    <h:outputText value="#{item.first}-#{item.last}" />
+                    <f:param name="first" value="#{item.first}" />
+                    <f:param name="last" value="#{item.last}" />
+                    </h:outputLink>
+               </span>    
+                </ui:repeat> 
+<p/>
             </ui:define>
         </ui:composition>
     </body>

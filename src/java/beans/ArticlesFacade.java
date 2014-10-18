@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 public class ArticlesFacade extends AbstractFacade<Articles> {
     @PersistenceContext(unitName = "MicroBlog")
     private EntityManager em1;
+    
 
     @Override
     protected EntityManager getEntityManager() {
@@ -17,6 +18,7 @@ public class ArticlesFacade extends AbstractFacade<Articles> {
     }
     
     
+
 
     public ArticlesFacade() {
         super(Articles.class);

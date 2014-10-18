@@ -16,7 +16,7 @@
                     <f:view>
 
 
-                        <ui:repeat value="#{articlesFacade.findAll()}" var="item">
+                        <ui:repeat value="#{articles_range}" var="item">
                           <p> 
                                 <table width="100%" border="0" cellspacing="0" cellpadding="5" bgcolor="white">
                                     <tr>
@@ -76,6 +76,20 @@
                                         </p> 
                         </ui:repeat> 
 
+                        
+                        
+                <ui:repeat value="#{articlesFacade_for_del.ranges}" var="item">
+              <span style="padding:5px;">
+                    <h:outputLink value="index">
+                    <h:outputText value="#{item.first}-#{item.last}" />
+                    <f:param name="first" value="#{item.first}" />
+                    <f:param name="last" value="#{item.last}" />
+                    </h:outputLink>
+               </span>    
+                </ui:repeat> 
+<p/>
+                        
+                        
                     </f:view>
                 </h:body>
 

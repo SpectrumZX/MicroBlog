@@ -20,11 +20,10 @@
        
         <div id="left">
                 <ui:insert name="left">
-            <h:form>
-            <p><a href="/#{settingsFacade.settings.path}/faces/index.xhtml">На главную</a></p> 
+                    <h:form>
+            <p><a href="/#{settingsFacade.settings.path}/faces/index">На главную</a></p> 
             <p><h:commandLink action="registration.xhtml" value="Регистрация"/></p> 
-            <p><a href="/#{settingsFacade.settings.path}/faces/admin/index.xhtml">Вход</a></p>
- 
+            <p><a href="/#{settingsFacade.settings.path}/faces/admin/index">Вход</a></p>
             
             <p/>
                Всего записей: <h:outputText value="#{articlesFacade_for_del.count()}" /> <br/>
