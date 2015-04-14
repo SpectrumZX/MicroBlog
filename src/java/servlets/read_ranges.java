@@ -2,10 +2,6 @@ package servlets;
 
 import beans.Articles;
 import beans.ArticlesFacade;
-import beans.ArticlesFacade_for_del;
-import beans.Settings;
-import beans.SettingsFacade;
-import beans.Utils;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -15,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "read_ranges", urlPatterns = {"/index", "/admin/index"})
+@WebServlet(name = "read_ranges", urlPatterns = {"/faces/index", "/faces/admin/index", "/index.xhtml"})
 public class read_ranges extends HttpServlet {
     
  @EJB ArticlesFacade articlesFacade;
@@ -26,7 +22,7 @@ public class read_ranges extends HttpServlet {
    Integer last_id;
 
        // если GET параметры пустые ставим значения по умолчанию иначе берем из параметров
-       if (request.getParameter("first") == null | request.getParameter("last") == null){
+       if (request.getParameter("first") == null || request.getParameter("last") == null){
            first_id = 1;
            last_id = 5;
        }
@@ -40,7 +36,11 @@ public class read_ranges extends HttpServlet {
       range[1] = last_id-1;
         List<Articles> articles_range = articlesFacade.findRange(range);
         getServletContext().setAttribute("articles_range", articles_range);
-        response.sendRedirect("index.xhtml");
+        
+        // если при старте зашли на /MicroBlog/index.xhtml то перенаправить в faces/index.xhtml
+        if("/MicroBlog/index.xhtml".equals(request.getRequestURI())) {
+            response.sendRedirect("faces/index.xhtml");
+        } else response.sendRedirect("index.xhtml");
     }
 
     @Override
