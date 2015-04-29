@@ -3,7 +3,6 @@ package beans;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import javax.ejb.EJB;
 import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
 import javax.persistence.EntityManager;

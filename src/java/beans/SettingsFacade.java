@@ -1,9 +1,6 @@
 package beans;
 
 import javax.annotation.Resource;
-import javax.ejb.Stateful;
-import javax.ejb.Stateless;
-import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
